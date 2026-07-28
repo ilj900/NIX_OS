@@ -1,0 +1,32 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 50,
+
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "network", "battery", "tray"],
+
+    "hyprland/workspaces": {
+        "format": "{id}"
+    },
+    "clock": {
+        "format": "{:%H:%M   %a %d %b}"
+    },
+    "network": {
+        "format-wifi": "{essid} ",
+        "format-ethernet": "eth ",
+        "format-disconnected": "disconnected"
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-icons": ["", "", ""],
+        "on-click": "~/.config/waybar/scripts/switch-audio-sink.sh",
+        "on-click-right": "pavucontrol",
+        "scroll-step": 5
+    },
+    "tray": {
+        "spacing": 10,
+        "icon-size": 24
+    }
+}
