@@ -25,3 +25,9 @@ window#waybar {
     padding: 0 10px;
     color: #ffffff;
 }
+
+#custom-power {
+    color: #e06c75;
+    padding: 0 10px;
+    font-size: 16px;
+}
