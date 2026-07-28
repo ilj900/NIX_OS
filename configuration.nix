@@ -143,6 +143,15 @@
     localNetworkGameTransfers.openFirewall = true; # optional: for local game transfers
   };
 
+  system.activationScripts.dotfileSymlinks.text = ''
+    u="ilj900"
+    home="/home/$u"
+    for d in hypr waybar mpv; do
+      ln -sfn "$home/NIX_OS/$d" "$home/.config/$d"
+      chown -h "$u:users" "$home/.config/$d"
+    done
+  '';
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
