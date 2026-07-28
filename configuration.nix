@@ -44,6 +44,8 @@
     withUWSM = true;       # recommended, integrates cleanly with systemd
     xwayland.enable = true; # lets you still run X11-only apps
   };
+
+  programs.hyprlock.enable = true;
   
   services.greetd = {
     enable = true;
