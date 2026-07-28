@@ -112,7 +112,7 @@
   ntfs3g
   udiskie
   git
-  git-cola
+  gitkraken
   kitty
   waybar
   rofi
@@ -130,7 +130,7 @@
   ];
 
   environment.shellAliases = {
-    snrs = "sudo nixos-rebuild switch";
+    snrs = "$HOME/NIX_OS/copy-hw-config.sh && sudo nixos-rebuild switch -I nixos-config=$HOME/NIX_OS/configuration.nix";
   };
 
   programs.steam = {
