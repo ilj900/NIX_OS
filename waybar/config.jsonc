@@ -5,7 +5,7 @@
 
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "network", "battery", "tray"],
+    "modules-right": ["hyprland/language","pulseaudio", "network", "battery", "tray"],
 
     "hyprland/workspaces": {
         "format": "{id}"
@@ -28,5 +28,11 @@
     "tray": {
         "spacing": 10,
         "icon-size": 24
+    },
+    "hyprland/language": {
+    "format": "{}",
+    "format-en": "US",
+    "format-ru": "RU",
+    "on-click": "hyprctl switchxkblayout current next"
     }
 }

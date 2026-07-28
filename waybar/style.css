@@ -20,3 +20,8 @@ window#waybar {
 #clock, #network, #pulseaudio, #tray {
     padding: 0 10px;
 }
+
+#language {
+    padding: 0 10px;
+    color: #ffffff;
+}
