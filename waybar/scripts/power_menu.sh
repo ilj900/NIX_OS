@@ -1,4 +1,4 @@
-options="⏻ Shutdown\n Reboot\n Suspend\n Hibernate\n Lock"
+options="⏻ Shutdown\n Reboot\n Lock"
 chosen=$(echo -e "$options" | rofi -dmenu --prompt "Power Menu" -i)
 
 case "$chosen" in

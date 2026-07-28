@@ -5,7 +5,7 @@
 
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["hyprland/language","pulseaudio", "network", "battery", "tray"],
+    "modules-right": ["hyprland/language","pulseaudio", "network", "tray", "custom/power"],
 
     "hyprland/workspaces": {
         "format": "{id}"
