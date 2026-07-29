@@ -111,10 +111,16 @@
   swayimg
   jq # needed for parsing hyprctl's JSON output. For window snapping script to work
   mpv
+  adwaita-icon-theme
   ];
 
   environment.shellAliases = {
     snrs = "sudo nixos-rebuild switch --flake $HOME/NIX_OS#ExMachina --impure";
+  };
+
+  environment.variables = {
+    XCURSOR_THEME = "Adwaita";
+    XCURSOR_SIZE = "24";
   };
 
   programs.steam = {
