@@ -119,7 +119,7 @@
   ];
 
   environment.shellAliases = {
-    snrs = "$HOME/NIX_OS/copy-hw-config.sh && sudo nixos-rebuild switch -I nixos-config=$HOME/NIX_OS/configuration.nix";
+    snrs = "sudo nixos-rebuild switch --flake $HOME/NIX_OS#ExMachina";
   };
 
   programs.steam = {
