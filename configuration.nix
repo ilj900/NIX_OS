@@ -1,11 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
-
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   
   # Bootloader.
@@ -119,7 +114,7 @@
   ];
 
   environment.shellAliases = {
-    snrs = "sudo nixos-rebuild switch --flake $HOME/NIX_OS#ExMachina";
+    snrs = "sudo nixos-rebuild switch --flake $HOME/NIX_OS#ExMachina --impure";
   };
 
   programs.steam = {
