@@ -47,6 +47,7 @@ local menu            = "hyprlauncher"
 local chrome          = "google-chrome"
 local chromeIncognito = "google-chrome --incognito"
 local imageViwer      = "swayimg"
+local kraken          = "gitkraken"
 
 -------------------
 ---- AUTOSTART ----
@@ -287,6 +288,7 @@ hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 hl.bind(mainMod .. " + F", hl.dsp.exec_cmd(chrome))
 hl.bind(mainMod .. " + I", hl.dsp.exec_cmd(chromeIncognito))
+hl.bind(mainMod .. " + K", hl.dsp.exec_cmd(kraken))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
@@ -417,4 +419,10 @@ hl.window_rule({
 
     float  = true,
     center = true,
+})
+
+hl.window_rule({
+    name  = "gitkraken-floating",
+    match = { class = "^(gitkraken)$" },
+    fullscreen = true,
 })
