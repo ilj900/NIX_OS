@@ -133,7 +133,7 @@
   system.activationScripts.dotfileSymlinks.text = ''
     u="ilj900"
     home="/home/$u"
-    for d in hypr waybar mpv swayimg; do
+    for d in hypr waybar mpv swayimg kitty; do
       ln -sfn "$home/NIX_OS/$d" "$home/.config/$d"
       chown -h "$u:users" "$home/.config/$d"
     done
