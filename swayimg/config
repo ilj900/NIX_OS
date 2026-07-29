@@ -1,0 +1,8 @@
+[list]
+all = yes
+
+[keys.viewer]
+Left = prev_file
+Right = next_file
+ScrollUp = zoom +10 mouse
+ScrollDown = zoom -10 mouse

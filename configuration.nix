@@ -111,7 +111,8 @@
   google-chrome
   discord
   telegram-desktop
-  imv
+  swayimg
+  jq # needed for parsing hyprctl's JSON output. For window snapping script to work
   mpv
   ];
 
@@ -129,10 +130,12 @@
   system.activationScripts.dotfileSymlinks.text = ''
     u="ilj900"
     home="/home/$u"
-    for d in hypr waybar mpv; do
+    for d in hypr waybar mpv swayimg; do
       ln -sfn "$home/NIX_OS/$d" "$home/.config/$d"
       chown -h "$u:users" "$home/.config/$d"
     done
+    ln -sfn "$home/NIX_OS/mimeapps.list" "$home/.config//mimeapps.list"
+    chown -h "$u:users" "$home/.config/mimeapps.list"
   '';
 
   system.stateVersion = "26.05"; # Did you read the comment?

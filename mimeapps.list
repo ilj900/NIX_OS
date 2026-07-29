@@ -1,0 +1,21 @@
+[Default Applications]
+text/plain=code.desktop
+image/jpeg=swayimg.desktop
+image/png=swayimg.desktop
+image/gif=swayimg.desktop
+image/webp=swayimg.desktop
+image/tiff=swayimg.desktop
+image/bmp=swayimg.desktop
+image/svg+xml=swayimg.desktop
+image/avif=swayimg.desktop
+image/heic=swayimg.desktop
+image/heif=swayimg.desktop
+image/x-portable-bitmap=swayimg.desktop
+image/x-portable-pixmap=swayimg.desktop
+application/x-zerosize=code.desktop
+x-scheme-handler/gitkraken=gitkraken.desktop
+
+[Added Associations]
+text/plain=code.desktop;
+application/x-zerosize=code.desktop;
+application/x-shellscript=code.desktop;

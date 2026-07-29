@@ -44,9 +44,9 @@ hl.monitor({
 local terminal        = "kitty"
 local fileManager     = "thunar"
 local menu            = "hyprlauncher"
-local chrome          = "google-chrome-stable"
-local chromeIncognito = "google-chrome-stable --incognito"
-local imageViwer      = "imv"
+local chrome          = "google-chrome"
+local chromeIncognito = "google-chrome --incognito"
+local imageViwer      = "swayimg"
 
 -------------------
 ---- AUTOSTART ----
@@ -328,6 +328,30 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
 
+-- Snap active floating window to thirds of its current monitor
+local _snap_i = 0
+
+local function snap_cycle()
+    local win = hl.get_active_window()
+    if not win or not win.floating then return end
+    local mon = win.monitor
+    if not mon then return end
+    local mw = math.floor(mon.width / mon.scale)
+    local mh = math.floor(mon.height / mon.scale)
+    local t  = math.floor(mw / 3)
+    local slots = {
+        { x = 0,     w = t           },
+        { x = t,     w = t           },
+        { x = t * 2, w = mw - t * 2  },
+    }
+    local s = slots[(_snap_i % 3) + 1]
+    hl.dispatch(hl.dsp.window.resize({ x = s.w, y = mh, exact = true }))
+    hl.dispatch(hl.dsp.window.move({ x = s.x, y = 0, exact = true }))
+    _snap_i = _snap_i + 1
+end
+
+hl.bind(mainMod .. " + CTRL + mouse:272", snap_cycle)
+
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
@@ -380,11 +404,10 @@ hl.window_rule({
 })
 
 hl.window_rule({
-    name  = "imv-floating",
-    match = { class = "^(imv)$" },
+    name  = "swayimg-floating",
+    match = { class = "^(swayimg)$" },
 
     float  = true,
-    size   = "70% 70%",
     center = true,
 })
 
