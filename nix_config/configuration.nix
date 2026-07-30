@@ -1,6 +1,11 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    /etc/nixos/hardware-configuration.nix
+    ./hip.nix
+  ];
+  
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   
   # Bootloader.
