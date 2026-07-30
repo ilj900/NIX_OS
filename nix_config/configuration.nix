@@ -115,7 +115,7 @@
   ];
 
   environment.shellAliases = {
-    snrs = "sudo nixos-rebuild switch --flake $HOME/NIX_OS#ExMachina --impure";
+    snrs = "sudo nixos-rebuild switch --flake $HOME/NIX_OS/nix_config#ExMachina --impure";
   };
 
   environment.variables = {
