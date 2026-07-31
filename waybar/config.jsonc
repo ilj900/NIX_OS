@@ -35,7 +35,7 @@
         "format-ru": "RU",
         "on-click": "hyprctl switchxkblayout current next"
     },
-        "custom/power": {
+    "custom/power": {
         "format": "⏻",
         "tooltip": false,
         "on-click": "~/.config/waybar/scripts/power_menu.sh"

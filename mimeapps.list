@@ -12,10 +12,7 @@ image/heic=swayimg.desktop
 image/heif=swayimg.desktop
 image/x-portable-bitmap=swayimg.desktop
 image/x-portable-pixmap=swayimg.desktop
-application/x-zerosize=code.desktop
 x-scheme-handler/gitkraken=gitkraken.desktop
 
 [Added Associations]
-text/plain=geany.desktop;clion.desktop;
-application/x-zerosize=code.desktop;
-application/x-shellscript=code.desktop;
+text/plain=clion.desktop;

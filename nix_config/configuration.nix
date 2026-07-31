@@ -150,7 +150,7 @@
       ln -sfn "$home/NIX_OS/$d" "$home/.config/$d"
       chown -h "$u:users" "$home/.config/$d"
     done
-    ln -sfn "$home/NIX_OS/mimeapps.list" "$home/.config//mimeapps.list"
+    ln -sfn "$home/NIX_OS/mimeapps.list" "$home/.config/mimeapps.list"
     chown -h "$u:users" "$home/.config/mimeapps.list"
   '';
 
