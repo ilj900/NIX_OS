@@ -111,7 +111,7 @@
   tumbler
   hyprlauncher
   brightnessctl
-  playerctrl
+  playerctl
   pavucontrol
   google-chrome
   discord
