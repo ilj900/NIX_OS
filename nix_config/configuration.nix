@@ -108,15 +108,16 @@
   networkmanagerapplet
   thunar
   tumbler
-  vscode
+  jetbrains.clion
   hyprlauncher
   google-chrome
   discord
   telegram-desktop
   swayimg
-  jq # needed for parsing hyprctl's JSON output. For window snapping script to work
   mpv
   adwaita-icon-theme
+  cmake
+  ninja
   ];
 
   environment.shellAliases = {

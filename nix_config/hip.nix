@@ -17,7 +17,13 @@
     rocm-runtime
     rocblas
     hipblas
+    rocm-device-libs
   ];
+
+  environment.variables = {
+    ROCM_PATH = "/opt/rocm";
+    HIP_DEVICE_LIB_PATH = "${pkgs.rocmPackages.rocm-device-libs}/amdgcn/bitcode";
+  };
 
   users.users."ilj900".extraGroups = [ "video" "render" ];
 }
