@@ -110,6 +110,9 @@
   thunar
   tumbler
   hyprlauncher
+  brightnessctl
+  playerctrl
+  pavucontrol
   google-chrome
   discord
   telegram-desktop
@@ -119,7 +122,7 @@
   jetbrains.clion
   clang
   lldb
-  pkgs.llvmPackages.llvm
+  llvmPackages.llvm
   cmake
   ninja
   ];
