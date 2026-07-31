@@ -1,5 +1,5 @@
 [Default Applications]
-text/plain=code.desktop
+text/plain=geany.desktop
 image/jpeg=swayimg.desktop
 image/png=swayimg.desktop
 image/gif=swayimg.desktop
@@ -16,6 +16,6 @@ application/x-zerosize=code.desktop
 x-scheme-handler/gitkraken=gitkraken.desktop
 
 [Added Associations]
-text/plain=code.desktop;
+text/plain=geany.desktop;clion.desktop;
 application/x-zerosize=code.desktop;
 application/x-shellscript=code.desktop;

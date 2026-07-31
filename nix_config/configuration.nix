@@ -101,6 +101,7 @@
   git
   gitkraken
   claude-code
+  geany
   kitty
   waybar
   rofi
@@ -108,7 +109,6 @@
   networkmanagerapplet
   thunar
   tumbler
-  jetbrains.clion
   hyprlauncher
   google-chrome
   discord
@@ -116,6 +116,10 @@
   swayimg
   mpv
   adwaita-icon-theme
+  jetbrains.clion
+  clang
+  lldb
+  pkgs.llvmPackages.llvm
   cmake
   ninja
   ];
