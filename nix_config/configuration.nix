@@ -4,6 +4,7 @@
   imports = [
     /etc/nixos/hardware-configuration.nix
     ./hip.nix
+    ./vulkan.nix
   ];
   
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -122,6 +123,7 @@
   adwaita-icon-theme
   jetbrains.clion
   clang
+  clang-tools
   lldb
   llvmPackages.llvm
   cmake
