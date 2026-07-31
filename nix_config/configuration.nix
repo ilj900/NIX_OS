@@ -110,6 +110,7 @@
   thunar
   tumbler
   hyprlauncher
+  hyprshutdown
   brightnessctl
   playerctl
   pavucontrol
