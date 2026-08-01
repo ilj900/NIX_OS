@@ -352,6 +352,8 @@ local function snap_cycle()
 end
 
 hl.bind(mainMod .. " + CTRL + mouse:272", snap_cycle)
+hl.bind(mainMod .. " + mouse:274",        hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }), { mouse = true })
+hl.bind(mainMod .. " + CTRL + mouse:274", hl.dsp.window.fullscreen({ mode = "maximized",  action = "toggle" }), { mouse = true })
 
 
 --------------------------------
