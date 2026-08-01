@@ -127,6 +127,12 @@
   llvmPackages.llvm
   cmake
   ninja
+  transmission_4-gtk
+  
+  (writeShellScriptBin "clion-vk" ''
+      setsid nix develop "$HOME/NIX_OS/nix_config#vulkan" -c clion "$@" \
+        >/dev/null 2>&1 < /dev/null &
+    '')
   ];
 
   environment.shellAliases = {
