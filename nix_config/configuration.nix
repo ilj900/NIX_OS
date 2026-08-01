@@ -4,7 +4,6 @@
   imports = [
     /etc/nixos/hardware-configuration.nix
     ./hip.nix
-    ./vulkan.nix
   ];
   
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

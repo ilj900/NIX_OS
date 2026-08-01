@@ -1,12 +1,22 @@
 {
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
 
-  outputs = { self, nixpkgs }: {
-    nixosConfigurations.ExMachina = nixpkgs.lib.nixosSystem {
+  outputs = { self, nixpkgs }:
+    let
       system = "x86_64-linux";
-      modules = [
-        ./configuration.nix
-      ];
+      pkgs = import nixpkgs { inherit system; };
+      vulkanShell = import ./vulkan.nix { inherit pkgs; };
+    in {
+      nixosConfigurations.ExMachina = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./configuration.nix
+        ];
+      };
+
+      devShells.${system} = {
+        vulkan  = vulkanShell;
+        default = vulkanShell;
+      };
     };
-  };
 }
