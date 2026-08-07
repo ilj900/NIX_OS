@@ -24,6 +24,22 @@
   # Select internationalisation properties.
   i18n.supportedLocales = [ "en_US.UTF-8/UTF-8" "ru_RU.UTF-8/UTF-8" ];
   i18n.defaultLocale = "en_US.UTF-8";
+  # Japanese (and general CJK) input method.
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5.addons = with pkgs; [
+      fcitx5-mozc
+      fcitx5-gtk
+      qt6Packages.fcitx5-configtool
+    ];
+    fcitx5.waylandFrontend = true;  # Wayland text-input protocol (Hyprland)
+  };
+  
+  fonts.packages = with pkgs; [
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+  ];
 
   console.useXkbConfig = true; 
 
