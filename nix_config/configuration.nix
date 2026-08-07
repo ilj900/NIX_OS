@@ -58,6 +58,18 @@
       Restart = "on-failure";
     };
   };
+  
+  systemd.user.services.waybar = {
+    description = "Waybar status bar";
+    wantedBy = [ "graphical-session.target" ];
+    partOf   = [ "graphical-session.target" ];
+    after    = [ "graphical-session.target" ];
+    serviceConfig = {
+      ExecStart  = "${pkgs.waybar}/bin/waybar";
+      Restart    = "on-failure";
+      RestartSec = 1;
+    };
+  };
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;

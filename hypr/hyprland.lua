@@ -64,7 +64,6 @@ local kraken          = "gitkraken"
 
 hl.on("hyprland.start", function()
   hl.exec_cmd("fcitx5 -d --replace")
-  hl.exec_cmd("waybar")
   hl.exec_cmd("discord --start-minimized")
   hl.exec_cmd("Telegram -startintray")
   hl.exec_cmd("steam -silent")
