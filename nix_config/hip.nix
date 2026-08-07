@@ -1,33 +1,37 @@
-{ pkgs, ... }:
+{ pkgs }:
 
-{
-  hardware.graphics = {
-    enable = true;
-    extraPackages = [ pkgs.rocmPackages.clr.icd ];
-  };
+pkgs.mkShell {
+  name = "hip-dev";
 
-  systemd.tmpfiles.rules = [
-    "L+ /opt/rocm - - - - ${pkgs.rocmPackages.clr}"
+  nativeBuildInputs = with pkgs; [
+    cmake
+    pkg-config
+    rocmPackages.rocm-cmake
+    rocmPackages.hipcc
+    rocmPackages.llvm.clang
+    rocmPackages.rocminfo
+    rocmPackages.rocm-smi
   ];
 
-  environment.systemPackages = with pkgs.rocmPackages; [
-    rocminfo
-    rocm-smi
-    clr
-    rocm-runtime
+  buildInputs = with pkgs.rocmPackages; [
+    clr              # HIP / OpenCL runtime
+    rocm-runtime     # HSA runtime
+    rocm-device-libs
     rocblas
     hipblas
-    rocm-device-libs
-    hipcc
-    rocm-cmake
-    llvm.clang
   ];
 
-  environment.variables = {
-    ROCM_PATH = "/opt/rocm";
-    HIP_PATH = "/opt/rocm";
-    HIP_DEVICE_LIB_PATH = "${pkgs.rocmPackages.rocm-device-libs}/amdgcn/bitcode";
-  };
+  shellHook = ''
+    export ROCM_PATH="${pkgs.rocmPackages.clr}"
+    export HIP_PATH="${pkgs.rocmPackages.clr}"
+    export HIP_DEVICE_LIB_PATH="${pkgs.rocmPackages.rocm-device-libs}/amdgcn/bitcode"
+    export LD_LIBRARY_PATH="${pkgs.lib.makeLibraryPath [
+      pkgs.rocmPackages.clr
+      pkgs.rocmPackages.rocm-runtime
+      pkgs.rocmPackages.rocblas
+      pkgs.rocmPackages.hipblas
+    ]}''${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 
-  users.users."ilj900".extraGroups = [ "video" "render" ];
+    echo "hip-dev shell ready — try: rocminfo | head"
+  '';
 }

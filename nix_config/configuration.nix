@@ -3,7 +3,6 @@
 {
   imports = [
     /etc/nixos/hardware-configuration.nix
-    ./hip.nix
     ./localization.nix
   ];
   
@@ -18,6 +17,12 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  
+  # Enable GPU
+  hardware.graphics = {
+    enable = true;
+    extraPackages = [ pkgs.rocmPackages.clr.icd ];
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Belgrade";
@@ -88,7 +93,7 @@
   users.users."ilj900" = {
     isNormalUser = true;
     description = "ilj900";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "render" ];
   };
 
   # Allow unfree packages
@@ -131,6 +136,11 @@
   
   (writeShellScriptBin "clion-vk" ''
       setsid nix develop "$HOME/NIX_OS/nix_config#vulkan" -c clion "$@" \
+        >/dev/null 2>&1 < /dev/null &
+    '')
+    
+  (writeShellScriptBin "clion-hip" ''
+      setsid nix develop "$HOME/NIX_OS/nix_config#hip" -c clion "$@" \
         >/dev/null 2>&1 < /dev/null &
     '')
   ];

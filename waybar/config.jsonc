@@ -4,7 +4,7 @@
     "height": 50,
 
     "modules-left": ["hyprland/workspaces"],
-    "modules-center": ["custom/clion"],
+    "modules-center": ["custom/clion", "custom/clion-hip"],
     "modules-right": ["hyprland/language", "pulseaudio", "tray", "clock", "custom/power"],
 
     "hyprland/workspaces": {
@@ -41,9 +41,15 @@
         "on-click": "~/.config/waybar/scripts/power_menu.sh"
     },
     "custom/clion": {
-        "format": " ",
+        "format": "VK",
         "tooltip": true,
-        "tooltip-format": "CLion with Vulkan env)",
+        "tooltip-format": "CLion with Vulkan env",
         "on-click": "clion-vk"
+    },
+    "custom/clion-hip": {
+        "format": "HIP",
+        "tooltip": true,
+        "tooltip-format": "CLion with HIP env",
+        "on-click": "clion-hip"
     }
 }

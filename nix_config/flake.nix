@@ -6,6 +6,7 @@
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
       vulkanShell = import ./vulkan.nix { inherit pkgs; };
+      hipShell = import ./hip.nix { inherit pkgs; };
     in {
       nixosConfigurations.ExMachina = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -17,6 +18,7 @@
       devShells.${system} = {
         vulkan  = vulkanShell;
         default = vulkanShell;
+        hip = hipShell;
       };
     };
 }
