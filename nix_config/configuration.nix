@@ -69,6 +69,7 @@
     wantedBy = [ "graphical-session.target" ];
     partOf   = [ "graphical-session.target" ];
     after    = [ "graphical-session.target" ];
+    path = [ "/run/current-system/sw" ];
     serviceConfig = {
       ExecStart  = "${pkgs.waybar}/bin/waybar";
       Restart    = "on-failure";
