@@ -1,5 +1,10 @@
 { config, pkgs, ... }:
 
+let
+  vulkanShell = import ./vulkan.nix { inherit pkgs; };
+  hipShell    = import ./hip.nix    { inherit pkgs; };
+in
+
 {
   imports = [
     /etc/nixos/hardware-configuration.nix
@@ -148,6 +153,7 @@
 
   environment.shellAliases = {
     snrs = "sudo nixos-rebuild switch --flake $HOME/NIX_OS/nix_config#ExMachina --impure";
+    sngc = "sudo nix-collect-garbage -d";
   };
 
   environment.variables = {
@@ -171,6 +177,11 @@
     done
     ln -sfn "$home/NIX_OS/mimeapps.list" "$home/.config/mimeapps.list"
     chown -h "$u:users" "$home/.config/mimeapps.list"
+  '';
+  
+  system.activationScripts.devShellRoots.text = ''
+    ln -sfn ${vulkanShell.inputDerivation} /nix/var/nix/gcroots/vulkan-dev
+    ln -sfn ${hipShell.inputDerivation}    /nix/var/nix/gcroots/hip-dev
   '';
 
   system.stateVersion = "26.05"; # Did you read the comment?

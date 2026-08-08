@@ -21,7 +21,7 @@ pkgs.mkShell {
     spirv-tools
     # --- GLFW (built from submodule) windowing deps ---
     wayland wayland-protocols libxkbcommon libGL
-    xorg.libX11 xorg.libXrandr xorg.libXinerama xorg.libXcursor xorg.libXi
+    libx11 libxrandr libxinerama libxcursor libxi
   ];
 
   shellHook = ''
