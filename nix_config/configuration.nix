@@ -4,6 +4,8 @@
   imports = [
     /etc/nixos/hardware-configuration.nix
     ./localization.nix
+    ./dev.nix
+    ./utils.nix
   ];
   
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
