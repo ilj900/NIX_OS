@@ -123,6 +123,7 @@ in
   hyprlauncher
   hyprshutdown
   brightnessctl
+  kdePackages.kcalc
   playerctl
   pavucontrol
   google-chrome
@@ -139,6 +140,11 @@ in
   cmake
   ninja
   transmission_4-gtk
+  
+  (python313.withPackages (ps: with ps; [
+    numpy
+    matplotlib
+  ]))
   
   (writeShellScriptBin "clion-vk" ''
       setsid nix develop "$HOME/NIX_OS/nix_config#vulkan" -c clion "$@" \
