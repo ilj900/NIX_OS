@@ -54,6 +54,15 @@ in
 
   services.udisks2.enable = true; # backend that actually performs the mount
   services.gvfs.enable = true;    # lets Thunar see/trigger mounts, trash, etc.
+  
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs.xfce; [
+      thunar-volman
+      thunar-archive-plugin
+    ];
+  };
+  services.tumbler.enable = true;
 
   # udiskie watches for udisks2 "device added" events and auto-mounts them.
   # It's started as a user service so it's running as soon as you log in,
@@ -118,8 +127,6 @@ in
   rofi
   dunst
   networkmanagerapplet
-  thunar
-  tumbler
   hyprlauncher
   hyprshutdown
   brightnessctl
