@@ -1,10 +1,5 @@
 { config, pkgs, ... }:
 
-let
-  vulkanShell = import ./vulkan.nix { inherit pkgs; };
-  hipShell    = import ./hip.nix    { inherit pkgs; };
-in
-
 {
   imports = [
     /etc/nixos/hardware-configuration.nix
@@ -49,34 +44,6 @@ in
       };
     };
   };
-
-  boot.supportedFilesystems = [ "ntfs" ];
-
-  services.udisks2.enable = true; # backend that actually performs the mount
-  services.gvfs.enable = true;    # lets Thunar see/trigger mounts, trash, etc.
-  
-  programs.thunar = {
-    enable = true;
-    plugins = with pkgs.xfce; [
-      thunar-volman
-      thunar-archive-plugin
-    ];
-  };
-  services.tumbler.enable = true;
-
-  # udiskie watches for udisks2 "device added" events and auto-mounts them.
-  # It's started as a user service so it's running as soon as you log in,
-  # regardless of what's in your Hyprland config.
-  systemd.user.services.udiskie = {
-    description = "Automatic mounting of removable media";
-    wantedBy = [ "graphical-session.target" ];
-    partOf = [ "graphical-session.target" ];
-    after = [ "graphical-session.target" ];
-    serviceConfig = {
-      ExecStart = "${pkgs.udiskie}/bin/udiskie --tray";
-      Restart = "on-failure";
-    };
-  };
   
   systemd.user.services.waybar = {
     description = "Waybar status bar";
@@ -117,12 +84,6 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  ntfs3g
-  git
-  gitkraken
-  claude-code
-  geany
-  kitty
   waybar
   rofi
   dunst
@@ -130,44 +91,10 @@ in
   hyprlauncher
   hyprshutdown
   brightnessctl
-  kdePackages.kcalc
   playerctl
   pavucontrol
-  google-chrome
-  discord
-  telegram-desktop
-  swayimg
-  mpv
   adwaita-icon-theme
-  jetbrains.clion
-  clang
-  clang-tools
-  lldb
-  llvmPackages.llvm
-  cmake
-  ninja
-  transmission_4-gtk
-  
-  (python313.withPackages (ps: with ps; [
-    numpy
-    matplotlib
-  ]))
-  
-  (writeShellScriptBin "clion-vk" ''
-      setsid nix develop "$HOME/NIX_OS/nix_config#vulkan" -c clion "$@" \
-        >/dev/null 2>&1 < /dev/null &
-    '')
-    
-  (writeShellScriptBin "clion-hip" ''
-      setsid nix develop "$HOME/NIX_OS/nix_config#hip" -c clion "$@" \
-        >/dev/null 2>&1 < /dev/null &
-    '')
   ];
-
-  environment.shellAliases = {
-    snrs = "sudo nixos-rebuild switch --flake $HOME/NIX_OS/nix_config#ExMachina --impure";
-    sngc = "sudo nix-collect-garbage -d";
-  };
 
   environment.variables = {
     XCURSOR_THEME = "Adwaita";
@@ -190,11 +117,6 @@ in
     done
     ln -sfn "$home/NIX_OS/mimeapps.list" "$home/.config/mimeapps.list"
     chown -h "$u:users" "$home/.config/mimeapps.list"
-  '';
-  
-  system.activationScripts.devShellRoots.text = ''
-    ln -sfn ${vulkanShell.inputDerivation} /nix/var/nix/gcroots/vulkan-dev
-    ln -sfn ${hipShell.inputDerivation}    /nix/var/nix/gcroots/hip-dev
   '';
 
   system.stateVersion = "26.05"; # Did you read the comment?
