@@ -1,9 +1,4 @@
-{ pkgs, ... }:
-
-let
-  vulkanShell = import ./vulkan.nix { inherit pkgs; };
-  hipShell    = import ./hip.nix    { inherit pkgs; };
-in
+{ pkgs, vulkanShell, hipShell, ... }:
 
 {
   environment.systemPackages = with pkgs; [
