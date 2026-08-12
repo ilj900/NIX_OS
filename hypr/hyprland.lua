@@ -290,6 +290,14 @@ hl.bind(mainMod .. " + I", hl.dsp.exec_cmd(chromeIncognito))
 hl.bind(mainMod .. " + K", hl.dsp.exec_cmd(kraken))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("pkill -USR1 waybar"))
 
+-- Screenshots (hyprshot) — Print-key scheme, --freeze uses hyprpicker
+hl.bind("Print",         hl.dsp.exec_cmd("hyprshot -m region --freeze --clipboard-only"))
+hl.bind("SHIFT + Print", hl.dsp.exec_cmd("hyprshot -m active -m window --clipboard-only"))
+hl.bind("CTRL + Print",  hl.dsp.exec_cmd("hyprshot -m active -m output --clipboard-only"))
+
+-- Color picker (hyprpicker) — pick a pixel, copy hex to clipboard
+hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd("hyprpicker -a"))
+
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))

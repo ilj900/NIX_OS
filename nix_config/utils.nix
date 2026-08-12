@@ -39,6 +39,7 @@
     discord
     telegram-desktop
     swayimg
+    drawing
     mpv
     transmission_4-gtk
   ];

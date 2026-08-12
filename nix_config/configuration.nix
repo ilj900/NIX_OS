@@ -93,6 +93,9 @@
   networkmanagerapplet
   hyprlauncher
   hyprshutdown
+  hyprshot
+  hyprpicker
+  wl-clipboard
   brightnessctl
   playerctl
   pavucontrol
