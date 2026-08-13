@@ -1,18 +1,5 @@
 { pkgs, ... }:
 
-let
-  kittyTerminalHelper = pkgs.writeTextDir "share/xfce4/helpers/kitty.desktop" ''
-    [Desktop Entry]
-    Version=1.0
-    Encoding=UTF-8
-    Type=X-XFCE-Helper
-    X-XFCE-Category=TerminalEmulator
-    Name=kitty
-    Icon=kitty
-    X-XFCE-Commands=kitty
-    X-XFCE-CommandsWithParameter=kitty %s
-  '';
-in
 {
   # ── Removable media / file management ────────────────────
   boot.supportedFilesystems = [ "ntfs" ];
@@ -47,7 +34,6 @@ in
     ntfs3g
     geany
     kitty
-    kittyTerminalHelper
     kdePackages.kcalc
     google-chrome
     discord
@@ -62,10 +48,4 @@ in
     snrs = "sudo nixos-rebuild switch --flake $HOME/NIX_OS/nix_config#ExMachina --impure";
     sngc = "sudo nix-collect-garbage -d";
   };
-  
-  environment.pathsToLink = [ "/share/xfce4" ];
-  
-  environment.etc."xdg/xfce4/helpers.rc".text = ''
-    TerminalEmulator=kitty
-  '';
 }
