@@ -42,6 +42,7 @@
     drawing
     mpv
     transmission_4-gtk
+    anydesk
   ];
 
   environment.shellAliases = {

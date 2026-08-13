@@ -438,3 +438,20 @@ hl.window_rule({
     match = { class = "^(gitkraken)$" },
     fullscreen = true,
 })
+
+hl.window_rule({
+    name  = "run-script-floating",
+    match = { class = "^(run_script)$" },
+
+    float  = true,
+    center = true,
+})
+
+-- GUI window a Python script opens (tkinter -> Tk, many Qt/GTK apps -> python3)
+hl.window_rule({
+    name  = "python-gui-floating",
+    match = { class = "^(Tk|python3)$" },
+
+    float  = true,
+    center = true,
+})

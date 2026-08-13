@@ -12,4 +12,17 @@
       <startup-notify/>
       <directories/>
 </action>
+<action>
+      <icon>text-x-python</icon>
+      <name>Run Script</name>
+      <submenu></submenu>
+      <unique-id>1785268759378812-2</unique-id>
+      <command>kitty --hold --class run_script python3 %f</command>
+      <description>Run this Python script in a floating window</description>
+      <range></range>
+      <patterns>*.py</patterns>
+      <startup-notify/>
+      <text-files/>
+      <other-files/>
+</action>
 </actions>
