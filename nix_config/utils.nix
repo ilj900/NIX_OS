@@ -63,6 +63,8 @@ in
     sngc = "sudo nix-collect-garbage -d";
   };
   
+  environment.pathsToLink = [ "/share/xfce4" ];
+  
   environment.etc."xdg/xfce4/helpers.rc".text = ''
     TerminalEmulator=kitty
   '';
