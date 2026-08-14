@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, unstablePkgs, ... }:
 
 {
   # ── Removable media / file management ────────────────────
@@ -43,6 +43,13 @@
     mpv
     transmission_4-gtk
     anydesk
+  ];
+  
+  nixpkgs.overlays = [
+    (final: prev: {
+      telegram-desktop = unstablePkgs.telegram-desktop;
+      discord = unstablePkgs.discord;
+    })
   ];
 
   environment.shellAliases = {
