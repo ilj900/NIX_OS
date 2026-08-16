@@ -4,7 +4,7 @@
     "height": 50,
 
     "modules-left": ["hyprland/workspaces"],
-    "modules-center": ["custom/clion", "custom/clion-hip"],
+    "modules-center": ["custom/blender", "custom/clion", "custom/clion-hip"],
     "modules-right": ["hyprland/language", "pulseaudio", "tray", "clock", "custom/power"],
 
     "hyprland/workspaces": {
@@ -51,5 +51,11 @@
         "tooltip": true,
         "tooltip-format": "CLion with HIP env",
         "on-click": "clion-hip"
+    },
+    "custom/blender": {
+        "format": " ",
+        "tooltip": true,
+        "tooltip-format": "Blender",
+        "on-click": "blender"
     }
 }

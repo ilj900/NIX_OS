@@ -28,6 +28,24 @@
       Restart = "on-failure";
     };
   };
+  security.polkit.enable = true;
+  security.polkit.extraConfig = ''
+    polkit.addRule(function(action, subject) {
+      if (
+        subject.isInGroup("wheel") &&
+        (
+          action.id == "org.freedesktop.udisks2.filesystem-mount-system" ||
+          action.id == "org.freedesktop.udisks2.filesystem-mount" ||
+          action.id == "org.freedesktop.udisks2.filesystem-mount-other-seat" ||
+          action.id == "org.freedesktop.udisks2.encrypted-unlock-system" ||
+          action.id == "org.freedesktop.udisks2.eject-media" ||
+          action.id == "org.freedesktop.udisks2.power-off-drive"
+        )
+      ) {
+        return polkit.Result.YES;
+      }
+    });
+  '';
 
   # ── General-purpose applications ─────────────────────────
   environment.systemPackages = with pkgs; [
@@ -43,6 +61,7 @@
     mpv
     transmission_4-gtk
     anydesk
+    pkgsRocm.blender
   ];
   
   nixpkgs.overlays = [
